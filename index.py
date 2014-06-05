@@ -10,6 +10,7 @@ class index():
 		self.__loadBody()
 		self.__loadServiceBody()
 		self.__loadPageBody()
+		self.__loadElements()
 
 	# Loads the elements file for the webpage
 	def __setElementsFile(self):
@@ -17,13 +18,19 @@ class index():
 		self.__cfg.read('web.ini')
 
 	def __loadHeader(self):
-		self.__header = self.cfg['DEFAULT']['header']
+		self.__header = self.__cfg['WebElements']['header']
 
 	def __loadBody(self):
-		self.__body = self.cfg['DEFAULT']['body']
+		self.__body = self.__cfg['WebElements']['body']
 
 	def __loadBlock(self):
-		self.__block = self.cfg['DEFAULT']['block']
+		self.__block = self.__cfg['WebElements']['block']
+
+	def __loadElements(self):
+		self.__green = self.__cfg['WebElements']['ElementGreen']
+		self.__yellow = self.__cfg['WebElements']['ElementYellow']
+		self.__red = self.__cfg['WebElements']['ElementRed']
+		self.__black = self.__cfg['WebElements']['ElementBlack']
 
 	def loadData(self):
 		return NONE
