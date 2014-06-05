@@ -22,11 +22,8 @@ class index():
 	def __loadBody(self):
 		self.__body = self.cfg['DEFAULT']['body']
 
-	def __loadServiceBody(self):
-		self.__serviceBody = self.cfg['DEFAULT']['serviceBody']
-
-	def __loadPageBody(self):
-		self.__pageBody = self.cfg['DEFAULT']['pageBody']
+	def __loadBlock(self):
+		self.__block = self.cfg['DEFAULT']['block']
 
 	def loadData(self):
 		return NONE
