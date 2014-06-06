@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
 import configparser
+import cgitb
+import loadConfig
+
+cgitb.enable()
 
 # Generate the index page with the states
 class index():
@@ -13,26 +17,30 @@ class index():
 		self.__loadServiceBody()
 		self.__loadPageBody()
 		self.__loadElements()
+		self.__cfg = self.__getCfg()
 
 	# Loads the elements file for the webpage
 	def __setElementsFile(self):
-		self.__cfg = configparser.ConfigParser()
-		self.__cfg.read('web.ini')
+		self.__ele = configparser.ConfigParser()
+		self.__ele.read('web.ini')
 
 	def __loadHeader(self):
-		self.__header = self.__cfg['WebElements']['header']
+		self.__header = self.__ele['WebElements']['header']
 
 	def __loadBody(self):
-		self.__body = self.__cfg['WebElements']['body']
+		self.__body = self.__ele['WebElements']['body']
 
 	def __loadBlock(self):
-		self.__block = self.__cfg['WebElements']['block']
+		self.__block = self.__ele['WebElements']['block']
 
 	def __loadElements(self):
-		self.__green = self.__cfg['WebElements']['ElementGreen']
-		self.__yellow = self.__cfg['WebElements']['ElementYellow']
-		self.__red = self.__cfg['WebElements']['ElementRed']
-		self.__black = self.__cfg['WebElements']['ElementBlack']
+		self.__green = self.__ele['WebElements']['ElementGreen']
+		self.__yellow = self.__ele['WebElements']['ElementYellow']
+		self.__red = self.__ele['WebElements']['ElementRed']
+		self.__black = self.__ele['WebElements']['ElementBlack']
+
+	def __getCfg(self):
+		return loadConfig.loadConfig()
 
 	def loadData(self):
 		return NONE
