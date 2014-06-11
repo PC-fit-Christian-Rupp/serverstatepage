@@ -17,9 +17,10 @@ class web():
 		self.__loadHeader()
 		self.__loadBody()
 		if page.equals('impressum'):
+			self.__loadAdress()
+			self.__loadErk()
 		else:
-			self.__loadServiceBody()
-			self.__loadPageBody()
+			self.__loadBlock()
 			self.__loadElements()
 
 	# Loads the elements file for the webpage
@@ -41,3 +42,38 @@ class web():
 		self.__yellow = self.__ele[self.__page]['ElementYellow']
 		self.__red = self.__ele[self.__page]['ElementRed']
 		self.__black = self.__ele[self.__page]['ElementBlack']
+
+	def __loadAdress(self):
+		self.__adress = self.__ele[self.__page]['adress']
+
+	def __loadErk(self):
+		self.__erk = self.__ele[self.__page]['erk']
+
+	def getHeader(self):
+		return self.__header
+
+	def getBody(self):
+		return self.__body
+
+	def getAdress(self):
+		return self.__adress
+
+	def getErk(self):
+		return self.__erk
+
+	def getBlock(self):
+		return self.__block
+
+	def getGreen(self):
+		return self.__green
+
+	def getYellow(self):
+		return self.__yellow
+
+	def getRed(self):
+		return self.__red
+
+	def getBlack(self):
+		return self.__black
+
+
