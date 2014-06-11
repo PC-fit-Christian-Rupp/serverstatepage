@@ -12,5 +12,16 @@ class impressum():
 
 	def __setElementFIle(self):
 		self.__ele = configparser.ConfigParser()
-		self.__ele.read('web.ini')		
+		self.__ele.read('web.ini')
+
+	def generatePage(self):
+		self.__htdoc = NONE
+
+	def view(self):
+		print(self.__htdoc)
+
+if __name__ == '__main__':
+	page =	impressum()
+	page.generatePage()
+	page.view()
 
