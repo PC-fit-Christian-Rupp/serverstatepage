@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 
 import configparser
 import cgitb
@@ -22,19 +22,19 @@ class index():
 		return loadConfig.loadConfig()
 
 	def loadData(self):
-		return NONE
+		return None
 
 	def generatePage(self):
-		return NONE
+		self.__page = ''
 
 	def __generateServices(self):
-		return NONE
+		return None
 
 	def __generatePAges(self):
-		return NONE
+		return None
 
 	def view(self):
-		print(NONE)
+		print(self.__page)
 
 if __name__ == "__main__":
 	Index = index()

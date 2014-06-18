@@ -8,11 +8,11 @@ cgitb.enable()
 
 class web():
 
-	def __init__(self, page = NONE):
-		if page.equals(NONE):
-			self.__page = 'WebElements'
-		else:
+	def __init__(self, page = None):
+		if page:
 			self.__page = page
+		else:
+			self.__page = 'WebElements'
 		self.__setElementsFile()
 		self.__loadHeader()
 		self.__loadBody()
