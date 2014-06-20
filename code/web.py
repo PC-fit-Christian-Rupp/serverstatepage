@@ -14,6 +14,7 @@ class web():
 		else:
 			self.__page = 'WebElements'
 		self.__setElementsFile()
+		self.__loadPattern()
 		self.__loadHeader()
 		self.__loadBody()
 		if self.__page == 'IMPRESSUM':
@@ -22,6 +23,9 @@ class web():
 		else:
 			self.__loadBlock()
 			self.__loadElements()
+
+	def __loadPattern(self):
+		self.__pattern = self.__ele['DEFAULT']['pattern']
 
 	# Loads the elements file for the webpage
 	def __setElementsFile(self):
@@ -76,4 +80,6 @@ class web():
 	def getBlack(self):
 		return self.__black
 
+	def getPattern(self):
+		return self.__pattern
 
