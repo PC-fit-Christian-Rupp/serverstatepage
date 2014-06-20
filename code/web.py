@@ -16,7 +16,7 @@ class web():
 		self.__setElementsFile()
 		self.__loadHeader()
 		self.__loadBody()
-		if page.equals('impressum'):
+		if self.__page == 'IMPRESSUM':
 			self.__loadAdress()
 			self.__loadErk()
 		else:

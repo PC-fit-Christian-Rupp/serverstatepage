@@ -3,5 +3,5 @@ import configparser
 class loadConfig:
 
 	def __init__(self):
-		self.cfg = configparser.ConfigParser()
-		self.cfg.read('config.ini')
+		self.__cfg = configparser.ConfigParser()
+		self.__cfg.read('config.ini')

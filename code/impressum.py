@@ -1,18 +1,18 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 
 import configparser
 import cgitb
+import web
 
 cgitb.enable()
 
 class impressum():
 
 	def __init__(self):
-		self.__setELemnentFile()
+		self.__web = self.__getWeb()
 
-	def __setElementFile(self):
-		self.__ele = configparser.ConfigParser()
-		self.__ele.read('web.ini')
+	def __getWeb(self):
+		return web.web('IMPRESSUM')
 
 	def generatePage(self):
 		self.__htdoc = NONE
