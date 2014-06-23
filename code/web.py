@@ -25,7 +25,7 @@ class web():
 			self.__loadElements()
 
 	def __loadPattern(self):
-		self.__pattern = self.__ele['DEFAULT']['pattern']
+		self.__pattern = r'\{(.+?)\}'
 
 	# Loads the elements file for the webpage
 	def __setElementsFile(self):

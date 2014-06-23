@@ -18,8 +18,7 @@ class impressum():
 	def generatePage(self):
 		self.__htdoc = self.__web.getHeader()
 		re.sub(self.__web.getPattern(),self.__web.getBody(),self.__htdoc)
-		content = self.__web.getAdress()+self.__web.getErk()
-		re.sub(self.__web.getPattern(),content,self.__htdoc)
+		re.sub(self.__web.getPattern(),self.__web.getAdress()+self.__web.getErk(),self.__htdoc)
 
 	def view(self):
 		print(self.__htdoc)
