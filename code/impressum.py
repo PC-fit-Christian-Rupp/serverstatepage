@@ -2,7 +2,6 @@
 
 import configparser
 import cgitb
-import re
 import web
 
 cgitb.enable()
@@ -17,8 +16,8 @@ class impressum():
 
 	def generatePage(self):
 		self.__htdoc = self.__web.getHeader()
-		re.sub(self.__web.getPattern(),self.__web.getBody(),self.__htdoc)
-		re.sub(self.__web.getPattern(),self.__web.getAdress()+self.__web.getErk(),self.__htdoc)
+		self.__htdoc = self.__htdoc.replace(self.__web.getPattern(),self.__web.getBody())
+		self.__htdoc = self.__htdoc.replace(self.__web.getPattern(),self.__web.getAdress()+self.__web.getErk())
 
 	def view(self):
 		print(self.__htdoc)
