@@ -8,7 +8,7 @@ import web
 cgitb.enable()
 
 # Generate the index page with the states
-class index():
+class index:
 
 	# Generates this object
 	def __init__(self):

@@ -6,7 +6,7 @@ import loadConfig
 
 cgitb.enable()
 
-class web():
+class web:
 
 	def __init__(self, page = None):
 		if page:

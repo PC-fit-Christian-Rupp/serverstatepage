@@ -6,7 +6,7 @@ import web
 
 cgitb.enable()
 
-class impressum():
+class impressum:
 
 	def __init__(self):
 		self.__web = self.__getWeb()
