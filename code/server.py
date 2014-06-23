@@ -33,3 +33,8 @@ class server:
 
 	def getState(self):
 		return self.__state
+
+	def loadData(self):
+		for i in self.__lst:
+			i.loadData()
+		self.scan()
