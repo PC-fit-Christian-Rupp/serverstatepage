@@ -30,7 +30,7 @@ class index:
 	def __generateServices(self):
 		return None
 
-	def __generatePAges(self):
+	def __generatePages(self):
 		return None
 
 	def view(self):

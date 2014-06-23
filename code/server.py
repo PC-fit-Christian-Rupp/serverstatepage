@@ -27,7 +27,7 @@ class server:
 			self.__state = 2
 		return response
 
-	def getColot(self):
+	def getColor(self):
 		return self.__color
 
 	def getState(self):
