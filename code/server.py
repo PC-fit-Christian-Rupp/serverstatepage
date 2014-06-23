@@ -29,3 +29,5 @@ class server:
 	def getColot(self):
 		return self.__color
 
+	def getState(self):
+		return self.__state
