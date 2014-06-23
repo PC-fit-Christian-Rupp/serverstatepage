@@ -7,6 +7,7 @@ class server:
 
 	def __init__(self, ip, name = None):
 		self.__ip = ipaddress.ip_address(ip)
+		self.__lst = []
 		if name:
 			self.__name = name
 		else:
