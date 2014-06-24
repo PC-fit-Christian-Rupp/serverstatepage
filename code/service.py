@@ -12,3 +12,5 @@ class service:
 			self.__name = name
 		else:
 			self.__name = 'Service Name missing'
+
+

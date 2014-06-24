@@ -22,7 +22,7 @@ class index:
 		return loadConfig.loadConfig()
 
 	def loadData(self):
-		return None
+		self.__cfg.loadData()
 
 	def generatePage(self):
 		self.__page = ''

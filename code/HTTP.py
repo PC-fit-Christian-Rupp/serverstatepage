@@ -14,3 +14,9 @@ class HTTP:
 
 	def getState(self):
 		return self.__state
+
+	def loadData(self):
+		self.scan()
+
+	def scan(self):
+		return None

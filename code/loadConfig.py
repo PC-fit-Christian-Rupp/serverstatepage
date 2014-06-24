@@ -29,7 +29,13 @@ class loadConfig:
 			self.__loadService(i, tmp)
 		self.__lst.add(tmp)
 
+	def __loadService(self, i, tmp):
+		return None
+
 	def loadData(self):
 		for i in self.__lst:
 			i.loadData()
+
+	def getCountServer(self):
+		return self.__countServer
 

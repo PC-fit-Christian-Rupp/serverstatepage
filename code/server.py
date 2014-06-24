@@ -7,6 +7,7 @@ class server:
 
 	def __init__(self, ip, name = None):
 		self.__ip = ipaddress.ip_address(ip)
+		self.__blackFlag = 0
 		self.__lst = []
 		if name:
 			self.__name = name
@@ -19,9 +20,9 @@ class server:
 		return self.__name
 
 	def scan(self):
-		response = os.system("ping -c 1 " + str(self.__ip))
-		if response == 0:
-			self.__state = response
+		self.__blackFlag = os.system("ping -c 1 " + str(self.__ip))
+		if self.__blackFlag == 0:
+			self.__state = self.__blackFlag
 			self.__color = '#00FF00'
 		else:
 			self.__color = '#FF0000'
@@ -38,3 +39,6 @@ class server:
 		for i in self.__lst:
 			i.loadData()
 		self.scan()
+
+	def getFlag(self):
+		return self.__blackFlag
