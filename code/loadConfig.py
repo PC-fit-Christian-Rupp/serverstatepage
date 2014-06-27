@@ -20,7 +20,7 @@ class loadConfig:
 		return self.__cfg[self.__default]['CountServer']
 
 	def __readData(self):
-		for i in self.__countServer:
+		for i in range(0,int(self.__countServer)-1):
 			self.__loadServer(i)
 
 	def __loadServer(self, numb):
