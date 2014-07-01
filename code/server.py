@@ -7,12 +7,12 @@ import configparser
 class server:
 
 	def __init__(self, cfg, i):
-		self.__default = 'DEFAULT'
-		self.__ip = ipadress.ipadress(cfg[self.__default][i+'.IP'])
+		self.__pfx = i+'.'
+		self.__ip = ipadress.ipadress(cfg[i][self.__pfx+'IP'])
 		self.__blackFlag = 0
 		self.__lst = []
-		if cfg[self.__default][i+'.Name']:
-			self.__name = cfg[self.__default][i+'.Name']
+		if cfg[i][self.__pfx+'Name']:
+			self.__name = cff[i][self.__pfx+'Name']
 		else:
 			self.__name = 'Missing Server Name'
 		self.__color = '#FFFF00'
