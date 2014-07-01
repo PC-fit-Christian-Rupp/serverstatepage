@@ -1,7 +1,5 @@
 import configparser
 import server
-import service
-import HTTP
 
 class loadConfig:
 

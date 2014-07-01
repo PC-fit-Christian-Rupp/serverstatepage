@@ -17,6 +17,11 @@ class server:
 			self.__name = 'Missing Server Name'
 		self.__color = '#FFFF00'
 		self.__state = 1
+		self.__readData(cfg)
+
+	def __readData(self, cfg):
+		for i in range(cfg[i][self.__pfx+'CountService']):
+			self.__lst.add(service.service(cfg, (i+'.'), self.__pfx))
 
 	def getName(self):
 		return self.__name
