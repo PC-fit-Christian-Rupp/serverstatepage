@@ -21,7 +21,7 @@ class loadConfig:
 
 	def __readData(self):
 		for i in range(0,int(self.__countServer)-1):
-			self.__loadServer(i)
+			self.add(service.service(self.__cfg),i)
 
 	def __loadServer(self, numb):
 		tmp = server.server(self.__cfg[self.__default][str(numb)+'.IP'],self.__cfg[self.__default][str(numb)+'.Name'])
@@ -30,7 +30,7 @@ class loadConfig:
 		self.__lst.add(tmp)
 
 	def __loadService(self, i, tmp):
-		return None
+		tmp = service.service()
 
 	def loadData(self):
 		for i in self.__lst:

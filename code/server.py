@@ -2,15 +2,17 @@ import os
 import sys
 import ipaddress
 import service
+import configparser
 
 class server:
 
-	def __init__(self, ip, name = None):
-		self.__ip = ipaddress.ip_address(ip)
+	def __init__(self, cfg, i):
+		self.__default = 'DEFAULT'
+		self.__ip = ipadress.ipadress(cfg[self.__default][i+'.IP'])
 		self.__blackFlag = 0
 		self.__lst = []
-		if name:
-			self.__name = name
+		if cfg[self.__default][i+'.Name']:
+			self.__name = cfg[self.__default][i+'.Name']
 		else:
 			self.__name = 'Missing Server Name'
 		self.__color = '#FFFF00'
