@@ -8,7 +8,18 @@ class main:
 		self.__path = "conf.ini"
 
 	def parsearg(self, argv):
-		pass
+		if len(argv)>1:
+			a = 0
+			for i in argv:
+				if a==0:
+					a=1
+				else:
+					code, arg = i.split('=')
+					if code is p:
+						if os.file.exists(arg):
+							self.__path = arg
+					elif code is pfx:
+						self.__pfx = arg
 
 	def readConfig(self):
 		self.__cfg.read(self.__path)
@@ -18,9 +29,3 @@ if __name__ == "__main__":
 	Main.parsearg(sys.argv)
 	Main.readConfig()
 	Main.loadDefault()
-	if len(sys.argv)==2:
-		path = sys.argv[1]
-		if (os.path.exists(path))
-			Main = main(path)
-	else:
-		Main = main()
