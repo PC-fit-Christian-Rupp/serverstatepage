@@ -20,7 +20,6 @@ class main:
 					if code == '-p':
 						if os.path.isfile(arg):
 							self.__path = arg
-							print('Ich existiere!')
 						else:
 							print(arg, "is a not existing file!")
 					elif code == '-pfx':
