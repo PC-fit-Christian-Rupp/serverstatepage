@@ -24,8 +24,13 @@ class main:
 	def readConfig(self):
 		self.__cfg.read(self.__path)
 
+	def loadConfig(self):
+		self.__loadDefault()
+		if self.__mysql == 1:
+			self.__loadMysql()
+
 if __name__ == "__main__":
 	Main = main()
 	Main.parsearg(sys.argv)
 	Main.readConfig()
-	Main.loadDefault()
+	Main.loadConfig()
