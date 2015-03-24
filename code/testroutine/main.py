@@ -35,6 +35,14 @@ class main:
 			self.__loadMysql()
 
 	def __loadDefault(self):
+		if (not os.path.isfile(self.__cfg[self.__section]['testinifile']))
+			print('['+time.ctime()+'] No Testini File!', file=sys.stderr)
+		else:
+			self.__testinifile = self.__cfg[self.__section]['testinifile']
+		if (not os.path.exists(self.__cfg[self.__section]['rootpath']))
+			print('['+time.ctime()+'] No existing root path!', file=sys.stderr)
+		else:
+			self.__rootpath = self.__cfg[self.__section]['rootpath']¬
 		self.__mysql = 0
 
 	def __loadMysql(self):
