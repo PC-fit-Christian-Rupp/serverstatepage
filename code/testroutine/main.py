@@ -1,11 +1,13 @@
 import sys
 import configparser
+import os
 
 class main:
 	
 	def __init__(self, path = None):
 		self.__cfg = configparser.ConfigParser()
 		self.__path = "conf.ini"
+		self.__section = 'DEFAULT'
 
 	def parsearg(self, argv):
 		if len(argv)>1:
@@ -15,10 +17,13 @@ class main:
 					a=1
 				else:
 					code, arg = i.split('=')
-					if code is p:
-						if os.file.exists(arg):
+					if code == '-p':
+						if os.path.isfile(arg):
 							self.__path = arg
-					elif code is pfx:
+							print('Ich existiere!')
+						else:
+							print(arg, "is a not existing file!")
+					elif code == '-pfx':
 						self.__pfx = arg
 
 	def readConfig(self):
@@ -28,6 +33,12 @@ class main:
 		self.__loadDefault()
 		if self.__mysql == 1:
 			self.__loadMysql()
+
+	def __loadDefault(self):
+		self.__mysql = 0
+
+	def __loadMysql(self):
+		pass
 
 if __name__ == "__main__":
 	Main = main()
