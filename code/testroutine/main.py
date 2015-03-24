@@ -1,6 +1,7 @@
 import sys
 import configparser
 import os
+import time
 
 class main:
 	
@@ -21,7 +22,7 @@ class main:
 						if os.path.isfile(arg):
 							self.__path = arg
 						else:
-							print(arg, "is a not existing file!")
+							print('['+time.ctime()+'] '+arg+ " is a not existing file!", file=sys.stderr)
 					elif code == '-pfx':
 						self.__pfx = arg
 
