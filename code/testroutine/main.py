@@ -26,6 +26,9 @@ class main:
 					elif code == '-pfx':
 						self.__pfx = arg
 
+	def setPfx(self, pfx):
+		self.__pfx = pfx
+
 	def readConfig(self):
 		self.__cfg.read(self.__path)
 
@@ -50,7 +53,11 @@ class main:
 			self.__mysql = 0
 
 	def __loadMysql(self):
-		pass
+		self.__connection = self.__cfg[self.__section]['connection']
+		self.__database = self.__cfg[self.__section]['database']
+		self.__user = self.__cfg[self.__section]['user']
+		self.__pwd = self.__cfg[self.__section]['pwd']
+		self.__statistics = self.__cfg[self.__section]['statistics']
 
 if __name__ == "__main__":
 	Main = main()
