@@ -1,8 +1,10 @@
+import os;
+
 class server:
 
-	def __init__ (self, Name, Ip):
-		self.__Name = Name
-		self.__Ip = Ip
+	def __init__ (self, Name, Ip, Os = None):
+		self.__name = Name
+		self.__ip = Ip
 
 	def addService (self, Service):
 		pass
@@ -11,7 +13,10 @@ class server:
 		pass
 
 	def __test(self):
-		pass
+		a = 0
+		for i in range(10):
+			a += os.system("ping -c 1" + self.__ip)
+		self.__pingProb = a/10
 
 	def __checkOs(self):
 		pass
@@ -41,4 +46,4 @@ class server:
 		pass
 
 	def getIp(self):
-		return self.__Ip
+		return self.__ip
