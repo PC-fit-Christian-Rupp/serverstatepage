@@ -24,6 +24,10 @@ class server:
 		for i in range(10):
 			a += os.system("ping -c 1" + self.__ip)
 		self.__pingProb = a/10
+		self.__setState()
+
+	def __setState(self):
+		pass
 
 	def __checkOs(self):
 		pass
@@ -38,19 +42,19 @@ class server:
 		pass
 
 	def getOs(self):
-		pass
+		return self.__os
 
 	def getVersion(self):
 		pass
 
 	def getList(self):
-		pass
+		return self.__services
 
 	def getState(self):
-		pass
+		return self.__state
 
 	def getName(self):
-		pass
+		return self.__name
 
 	def getIp(self):
 		return self.__ip
