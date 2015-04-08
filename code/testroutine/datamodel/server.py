@@ -5,12 +5,19 @@ class server:
 	def __init__ (self, Name, Ip, Os = None):
 		self.__name = Name
 		self.__ip = Ip
+		self.__services = []
+		if Os:
+			self.__os = Os
+		else:
+			self.__os = None
 
 	def addService (self, Service):
-		pass
+		self.__services.append(Service)
 
 	def check (self):
-		pass
+#		for i in self.__services:
+#			i.check()
+		self.__test()
 
 	def __test(self):
 		a = 0
