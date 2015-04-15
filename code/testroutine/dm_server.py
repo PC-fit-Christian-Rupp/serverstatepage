@@ -1,4 +1,5 @@
 import os;
+import ../enums/ops;
 
 class server:
 
