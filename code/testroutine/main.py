@@ -7,7 +7,8 @@ class main:
 	
 	def __init__(self, path = None):
 		self.__cfg = configparser.ConfigParser()
-		self.__path = "conf.ini"
+		if path:
+			self.__path = "conf.ini"
 		self.__section = 'DEFAULT'
 
 	def parsearg(self, argv):

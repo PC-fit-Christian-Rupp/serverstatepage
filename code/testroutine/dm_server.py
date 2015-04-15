@@ -1,12 +1,13 @@
-import os;
-import ../enums/ops;
+import os
+import enum
 
 class server:
 
-	def __init__ (self, Name, Ip, Os = None):
+	def __init__ (self, Name, Ip, statistics, Os = None):
 		self.__name = Name
 		self.__ip = Ip
 		self.__services = []
+		self.__statistics = statistics
 		if Os:
 			self.__os = Os
 		else:
@@ -28,7 +29,12 @@ class server:
 		self.__setState()
 
 	def __setState(self):
-		pass
+		if self.__pingProb <= 1 and self.__pingProb >= 0.8:
+			self.__state = 1
+		elif self.__pingProb <= 0.79 and self.__pingProb >= 0.41:
+			self.__state = 2
+		elif self.__pingProb <= 0.4 and self.__pingProb >= 0:
+			self.__state = 3
 
 	def __checkOs(self):
 		pass
@@ -59,3 +65,6 @@ class server:
 
 	def getIp(self):
 		return self.__ip
+
+	def getStatistic(self):
+		return self.__statistic
