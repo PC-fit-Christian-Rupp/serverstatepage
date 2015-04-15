@@ -10,6 +10,7 @@ class main:
 		if path:
 			self.__path = "conf.ini"
 		self.__section = 'DEFAULT'
+		self.__statistics = 0
 
 	def parsearg(self, argv):
 		if len(argv)>1:

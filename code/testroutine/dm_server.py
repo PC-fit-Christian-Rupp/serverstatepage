@@ -1,7 +1,7 @@
 import os
 import enum
 
-class server:
+class dm_server:
 
 	def __init__ (self, Name, Ip, statistics, Os = None):
 		self.__name = Name
