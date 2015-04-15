@@ -8,6 +8,8 @@ class main:
 	def __init__(self, path = None):
 		self.__cfg = configparser.ConfigParser()
 		if path:
+			self.__path = path
+		else
 			self.__path = "conf.ini"
 		self.__section = 'DEFAULT'
 		self.__statistics = 0
