@@ -20,9 +20,11 @@ class wrap_ini:
 		self.__servercount = int(self._cfg[self.__def]['SERVER_COUNT'])
 
 	def load(self):
-		pass
+		self.__data = []
+		for i in range(self.__servercount):
+			self.__data.append(self.__loadServer(i))
 
-	def __loadServer(self):
+	def __loadServer(self, i):
 		pass
 
 	def getData(self):
