@@ -9,7 +9,7 @@ class main:
 		self.__cfg = configparser.ConfigParser()
 		if path:
 			self.__path = path
-		else
+		else:
 			self.__path = "conf.ini"
 		self.__section = 'DEFAULT'
 		self.__statistics = 0
