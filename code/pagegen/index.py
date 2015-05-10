@@ -8,6 +8,12 @@ class index:
 	def __init__(self):
 		pass
 
+	def __loadDefaultConf(self):
+		pass
+
+	def __loadIndexConf(self):
+		pass
+
 	def parseArg(self, argv):
 		pass
 
