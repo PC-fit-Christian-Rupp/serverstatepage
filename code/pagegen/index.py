@@ -15,7 +15,15 @@ class index:
 		pass
 
 	def parseArg(self, argv):
-		pass
+		if len(argv)>1:
+			a = 0
+			for i in argv:
+				if a== 0:
+					a +=1
+				else:
+					code, arg = i.split('=')
+					if code == '-pfx':
+						self.__pfx = arg
 
 if __name__ == "__main__":
 	a = index.index()
