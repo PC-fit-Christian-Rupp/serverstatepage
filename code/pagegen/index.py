@@ -11,11 +11,13 @@ class index:
 		self.__cfg = configparser.ConfigParser()
 		self.__loadConfigFile()
 		self.__cookieExist()
+		self.__pfx = None
+		self.__useCookie = 0
 		self.__cookie = ccookie.ccookie()
 
 	def loadConfig(self):
 		self.__loadConfigFile()
-		self.__loadDefaultConf()
+		self.__loadDefaultConf('DEFAULT')
 		self.__loadIndexConf()
 
 	def __cookieExist(self):
@@ -31,7 +33,8 @@ class index:
 		self.__cfg.read('conf.ini')
 
 	def __loadDefaultConf(self, section):
-		pass
+		for key in self.__cfg[section]:
+			pass
 
 	def __loadIndexConf(self):
 		pass
@@ -43,6 +46,9 @@ class index:
 		pass
 
 	def printPage(self):
+		pass
+
+	def connectData(self):
 		pass
 
 	def getPage(self):
@@ -62,4 +68,8 @@ class index:
 if __name__ == "__main__":
 	a = index.index()
 	a.parseArg(sys.argv)
-	
+	a.loadConfig()
+	a.useCookie()
+	a.connectData()
+	a.render()
+	a.printPage()
