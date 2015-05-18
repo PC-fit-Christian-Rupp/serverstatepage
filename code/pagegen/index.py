@@ -6,6 +6,9 @@ import sys
 import configparser
 import os
 
+import cgitb
+cgitb.enable()
+
 class index:
 
 	def __init__(self):
