@@ -82,7 +82,7 @@ class index:
 						self.__pfx = arg
 
 if __name__ == "__main__":
-	a = index.index()
+	a = index()
 	a.parseArg(sys.argv)
 	a.loadConfig()
 	a.useCookie()
