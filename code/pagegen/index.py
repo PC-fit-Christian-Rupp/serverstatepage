@@ -70,20 +70,8 @@ class index:
 	def getPage(self):
 		return self.__page
 
-	def parseArg(self, argv):
-		if len(argv)>1:
-			a = 0
-			for i in argv:
-				if a== 0:
-					a +=1
-				else:
-					code, arg = i.split('=')
-					if code == '-pfx':
-						self.__pfx = arg
-
 if __name__ == "__main__":
 	a = index()
-	a.parseArg(sys.argv)
 	a.loadConfig()
 	a.useCookie()
 	a.connectData()
