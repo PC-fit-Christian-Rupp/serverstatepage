@@ -64,7 +64,7 @@ class index:
 	def printPage(self):
 		self.__page.replace('\n',' ')
 		self.__page.replace('\t',' ')
-		print(' \n'+self.__page)
+		print('Content-Type: text/html; charset=iso8858-15\n\n'+self.__page)
 
 	def connectData(self):
 		pass
