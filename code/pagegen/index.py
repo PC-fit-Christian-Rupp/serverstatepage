@@ -60,7 +60,7 @@ class index:
 
 	def render(self):
 		self.__body = self.__body.substitute(header=self.__header, wrapper=self.__contentwrapper, footer=self.__footer)
-						self.__page = self.__page.substitute(body=self.__body, title = self.__title)
+		self.__page = self.__page.substitute(body=self.__body, title = self.__title)
 
 	def printPage(self):
 		self.__page.replace('\n',' ')
