@@ -63,7 +63,7 @@ class index:
 
 	def printPage(self):
 		self.__page.replace('\n',' ')
-		self.__page-replace('\t',' ')
+		self.__page.replace('\t',' ')
 		print(self.__page)
 
 	def connectData(self):
