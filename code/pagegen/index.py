@@ -59,7 +59,8 @@ class index:
 		pass
 
 	def render(self):
-		pass
+		self.__body = self.__body.substitute(header=self.__header, wrapper=self.__contentwrapper, footer=self.__footer)
+						self.__page = self.__page.substitute(body=self.__body, title = self.__title)
 
 	def printPage(self):
 		self.__page.replace('\n',' ')
@@ -73,7 +74,11 @@ class index:
 		return self.__page
 
 	def loadTemplates(self):
-		self.__page = open('template/head.html').read().replace('\n', ' ')
+		self.__page = Template(open('template/head.html').read().replace('\n', ' '))
+		self.__body = Template(open('template/body.html').read().replace('\n', ' '))
+		self.__header = Template(open('template/header.html').read().replace('\n', ' '))
+		self.__contentwrapper = Template(open('template/contentwrapper.html').read().replace('\n', ' '))
+		self.__footer = Template(open('template/footer.html').read().replace('\n', ' '))
 
 if __name__ == "__main__":
 	a = index()
