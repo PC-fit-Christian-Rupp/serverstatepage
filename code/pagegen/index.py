@@ -62,6 +62,8 @@ class index:
 		pass
 
 	def printPage(self):
+		self.__page.replace('\n',' ')
+		self.__page-replace('\t',' ')
 		print(self.__page)
 
 	def connectData(self):
@@ -71,7 +73,7 @@ class index:
 		return self.__page
 
 	def loadTemplates(self):
-		self.__page = open('template/head.html').read().replace('\n', '')
+		self.__page = open('template/head.html').read()
 
 if __name__ == "__main__":
 	a = index()
