@@ -73,7 +73,7 @@ class index:
 		return self.__page
 
 	def loadTemplates(self):
-		self.__page = open('template/head.html').read()
+		self.__page = open('template/head.html').read().replace('\n', ' ')
 
 if __name__ == "__main__":
 	a = index()
