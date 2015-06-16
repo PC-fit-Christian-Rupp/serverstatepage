@@ -13,11 +13,9 @@ class index:
 
 	def __init__(self):
 		self.__cfg = configparser.ConfigParser()
-		self.__loadConfigFile()
 		self.__cookieExist()
 		self.__pfx = None
 		self.__useCookie = 0
-		self.__cookie = ccookie.ccookie()
 
 	def loadConfig(self):
 		self.__loadConfigFile()
@@ -53,7 +51,9 @@ class index:
 
 	def __loadIndexConf(self):
 		section = 'INDEX'
-		self.__title = self.__getConfItem(section, 'title')
+		for key in self.__cfg[section]:
+			if key == 'title':
+				self.__title = self.__getConfItem(section, key)
 
 	def loadElements(self):
 		pass
@@ -62,7 +62,7 @@ class index:
 		pass
 
 	def printPage(self):
-		pass
+		print(self.__page)
 
 	def connectData(self):
 		pass
@@ -70,10 +70,15 @@ class index:
 	def getPage(self):
 		return self.__page
 
+	def loadTemplates(self):
+		self.__page = open('template/head.html').readlines()
+
 if __name__ == "__main__":
 	a = index()
 	a.loadConfig()
 	a.useCookie()
 	a.connectData()
+	a.loadTemplates()
+	a.loadElements()
 	a.render()
 	a.printPage()

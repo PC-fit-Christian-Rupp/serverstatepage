@@ -27,27 +27,39 @@ class ccookie:
 		self.__cookie["session"]["domain"] = '.'+ os.environ["SERVER_NAME"]
 		self.__cookie["session"]["path"] = '/'
 		self.__cookie["session"]["expires"] = self.__expiration().strftime("%a, %d-%b-%Y %H:%M:%S PST")
-		self.__cookie["session"][self.__encrypt('IP').decode('utf-16')] = self.__encrypt(os.environ["REMOTE_ADDR"])
+		self.__cookie[str(self.__toInt(self.__encrypt('IP')))] = self.__toInt(self.__encrypt(os.environ["REMOTE_ADDR"]))
+
+	def __toInt(self, a):
+		return int.from_bytes(a, byteorder='big')
+
+	def __toByte(self, a):
+		return a.to_bytes((a.bit_length()+7)//8, byteorder='big')
 
 	def __expiration(self):
 		return datetime.datetime.now() + datetime.timedelta(minutes=15)
 
+	def hasKey(self, a):
+		if str(self.__toInt(self.__encrypt(a))) in self.__cookie:
+			return 1
+		else:
+			return 0
+
 	def login(self, user, password):
 		if self.isValid():
-			self.__cookie['session'][self.__encrypt('USER').decode('utf-16')] = self.__encrypt(user)
-			self.__cookie['session'][self.__encrypt('PASSWORD').decode('utf-16')] = self.__encrypt(password)
+			self.__cookie[str(self.__toInt(self.__encrypt('USER')))] = self.__toInt(self.__encrypt(user))
+			self.__cookie[str(self.__toInt(self.__encrypt('PASSWORD')))] = self.__toInt(self.__encrypt(password))
 
 	def getUser(self):
 		if self.isValid():
 			try:
-				return self.__decode(self.__cookie['session'][self.__encrypt('USER').decode('utf-16')].value)
+				return self.__decrypt(self.__toByte(int(self.__cookie[str(self.__toInt(self.__encrypt('USER')))].value)))
 			except (KeyError):
 				self.__keyErrorHandler('getUser', self.__encrypt('USER').decode('utf-16'))
 
 	def getPassword(self):
 		if self.isValid():
 			try:
-				return self.__decode(self.__cookie['session'][self.__encrypt('PASSWORD').decode('utf-16')].value)
+				return self.__decrypt(self.__toByte(int(self.__cookie[str(self.__toInt(self.__encrypt('PASSWORD')))].value)))
 			except (KeyError):
 				self.__keyErrorHandler('getPassword', self.__encrypt('PASSWORD').decode('utf-16'))
 
@@ -57,19 +69,19 @@ class ccookie:
 
 	def addValue(self, keyword, value):
 		if self.isValid():
-			self.__cookie[self.__encrypt(keyword).decode('utf-16')] = self.__encrypt(value)
+			self.__cookie[str(self.__toInt(self.__encrypt(keyword)))] = self.__toInt(self.__encrypt(value))
 
 	def deleteValue(self, keyword):
 		if self.isValid():
 			try:
-				del self.__cookie[self.__encrypt(keyword).decode('utf-16')]
+				del self.__cookie[str(self.__toInt(self.__encrypt(keyword)))]
 			except (KeyError):
 				self.__keyErrorHandler('deleteValue', self.__encrypt(keyword).decode('utf-16'))
 
 	def getValue(self, keyword):
 		if self.isValid():
 			try:
-				return self.__decode(self.__cookie[self.__encrypt(keyword).decode('utf-16')].value)
+				return self.__decrypt(self.__toByte(int(self.__cookie[str(self.__toInt(self.__encrypt(keyword)))].value)))
 			except (KeyError):
 				self.__keyErrorHandler('getValue', self.__encrypt(keyword).decode('utf-16'))
 
@@ -77,7 +89,7 @@ class ccookie:
 		return AES.new(str.encode(self.__key), AES.MODE_CBC, self.__IV).encrypt(self.__pad(strin))
 
 	def __decrypt(self, strin):
-		return self.__unpad((AES.new(str.encode(self.__key), AES.MODE_CBC, self.__IV).decrypt(strin)).decode('utf-8'))
+		return self.__unpad((AES.new(str.encode(self.__key), AES.MODE_CBC, self.__IV).decrypt(strin)).decode('utf8'))
 
 	def __pad(self, strin):
 		i = 16 - (len(strin)%16)
@@ -94,7 +106,8 @@ class ccookie:
 		return strin
 
 	def isValid(self):
-		if self.__cookie['session'][self.__encrypt('IP').decode('utf-16')].value == self.__encrypt(os.environ['REMOTE_ADDR']):
+		ip = int(self.__cookie[str(self.__toInt(self.__encrypt('IP')))].value)
+		if self.__decrypt(self.__toByte(ip)) == os.environ['REMOTE_ADDR']:
 			return 1
 		else:
 			return 0
