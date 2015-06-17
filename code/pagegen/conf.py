@@ -43,6 +43,6 @@ class conf:
 		for key in self.__cfg[section]:
 			if key == 'title':
 				title = self.__getConfItem(section, key)
-			elif key == 'headertitle'
+			elif key == 'headertitle':
 				headertitle = self.__getConfItem(section, key)
 		return (title, headertitle)
