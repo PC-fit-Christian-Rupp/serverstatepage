@@ -6,15 +6,15 @@ class conf:
 	def __init__(self):
 		self.__cfg = configparser.ConfigParser()
 		self.__cfg.read('conf.ini')
-		self.__cookieExist()
+		self.__cookieexist()
 		self.__pfx = None
 		self.__useCookie = 0
-		self.__useCookie()
+		self.__usecookie()
 		self.__loadDefaultConf('DEFAULT')
 		if self.__mysql:
 			self.__loadMysql('MYSQL')
 
-	def __useCookie(self):
+	def __usecookie(self):
 		if self.__useCookie:
 			pass
 
@@ -32,7 +32,7 @@ class conf:
 	def __getConfItem(self, section, key):
 		return self.__cfg[section][key]
 
-	def __cookieExist(self):
+	def __cookieexist(self):
 		if 'HTTP_COOKIE' in os.environ:
 			self.__cookieExist = 1
 		else:
