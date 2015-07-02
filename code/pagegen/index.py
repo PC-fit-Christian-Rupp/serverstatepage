@@ -28,9 +28,6 @@ class index:
 		self.__page.replace('\t',' ')
 		print('Content-Type: text/html; charset=iso8858-15\n\n'+self.__page)
 
-	def connectData(self):
-		pass
-
 	def getPage(self):
 		return self.__page
 
@@ -42,8 +39,8 @@ class index:
 		self.__footer = Template(open('template/footer.html').read().replace('\n', ' '))
 
 if __name__ == "__main__":
-	a = index()
-	a.connectData()
+	a = index()i
+	a.parsePath()
 	a.loadTemplates()
 	a.loadElements()
 	a.render()

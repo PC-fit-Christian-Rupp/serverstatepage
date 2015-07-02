@@ -14,6 +14,11 @@ class conf:
 		if self.__mysql:
 			self.__loadMysql('MYSQL')
 
+	def __connectData(self):
+		pass
+
+	def __parsePath(self):
+
 	def __usecookie(self):
 		if self.__useCookie:
 			pass
@@ -28,6 +33,11 @@ class conf:
 				self.__useCookie = int(self.__getConfItem(section, key))
 			elif key == 'mysql':
 				self.__mysql = int(self.__getConfItem(section, key))
+			elif key == 'rootpath':
+				self.__rootpath = self.__getConfItem(section, key)
+
+	def getRootPath(self):
+		return self.__rootpath
 
 	def __getConfItem(self, section, key):
 		return self.__cfg[section][key]
